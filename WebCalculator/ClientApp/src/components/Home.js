@@ -1,22 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Form from 'react-bootstrap/Form';
 import { CalculatorRow } from './CalculatorRow';
 
 export function Home() {
   const [show, setShow] = useState(false);
+  const [darkModeEnabled, setDarkModeEnabled] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  function handleDarkModeToggle(e) {
+    setDarkModeEnabled(e.target.checked);
+  }
+
   return (
     <div>
-      <Button variant="primary" onClick={handleShow}>
+      <Button className='mb-4' variant="primary" onClick={handleShow}>
         Open Calculator
       </Button>
       
+      <Form.Group className="mb-3" controlId="darkModeCheckBox">
+        <Form.Check type="checkbox" label="Enable dark mode" onChange={handleDarkModeToggle} />
+      </Form.Group>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} className={darkModeEnabled ? 'dark-mode' : ''}>
         <Modal.Header closeButton>
           <Modal.Title>Calculator</Modal.Title>
         </Modal.Header>

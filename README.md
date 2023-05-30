@@ -1,6 +1,6 @@
 # Web Calculator
 
-To run the web application, from the repository directory terminal run:
+To run the web application, from the repository directory, run:
 
 ```sh
 dotnet run --project WebCalculator
